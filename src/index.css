@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --sm: 600px;
+}
+
+html {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background-color: var(--background-default);
+}
+
+@media (hover: none) {
+    * {
+        cursor: none !important;
+    }
+}
