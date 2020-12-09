@@ -1,0 +1,88 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    > .nav-item {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        height: 48px;
+        transition: 500ms;
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 48px;
+            max-height: 48px;
+            color: var(--text-primary);
+            text-decoration: none;
+
+            .nav-item-icon {
+                width: 48px;
+                text-align: center;
+            }
+            .nav-item-title {
+                display: flex;
+                flex-grow: 1;
+            }
+            .nav-item-close {
+                border: solid var(--text-primary);
+                border-width: 0 2px 2px 0;
+                display: inline-block;
+                padding: 3.5px;
+                margin: 0 8px 0 8px;
+                transform: rotate(45deg);
+                transition: 500ms;
+            }
+        }
+
+        > .nav {
+            overflow: hidden;
+            height: auto;
+            margin: 5px 0 5px 24px;
+            border-left: 1px solid var(--divider);
+            .nav-item {
+                .nav-link {
+                    min-height: 40px;
+                    max-height: 40px;
+                    padding: 0 0 0 24px;
+                    width: auto;
+
+                    .nav-item-icon {
+                        display: none;
+                    }
+
+                    .nav-item-title {
+                        font-size: 14px;
+                        color: var(--text-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    > .active {
+        .nav-link {
+            .nav-item-close {
+                transform: rotate(-135deg);
+                transition: 500ms;
+            }
+        }
+    }
+}
+
+.nav {
+    &-item {
+        .nav-link {
+            &:hover {
+                background-color: var(--action-hover);
+            }
+        }
+
+        > .active {
+            background-color: var(--action-active);
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    height: 36px;
+
+    &-item {
+        .breadcrumb-link {
+            color: var(--text-secondary);
+        }
+        .breadcrumb-separator {
+            padding: 0 8px;
+            color: var(--text-secondary);
+        }
+
+        &:last-child {
+            .breadcrumb-separator {
+                display: none;
+            }
+        }
+    }
+
+    > .active {
+        .breadcrumb-link {
+            color: var(--text-primary);
+        }
+    }
+}

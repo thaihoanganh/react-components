@@ -1,0 +1,25 @@
+.card {
+    border: 1px solid var(--divider);
+    &-head {
+        display: flex;
+        align-items: center;
+        height: 48px;
+        padding: 0 8px;
+        border-bottom: 1px solid var(--divider);
+
+        &-title {
+            display: flex;
+            flex-grow: 1;
+            font-weight: 500;
+        }
+    }
+
+    &-image {
+        img {
+            width: 100%;
+        }
+    }
+    &-body {
+        padding: 8px;
+    }
+}

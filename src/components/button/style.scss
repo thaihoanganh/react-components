@@ -1,0 +1,83 @@
+.btn {
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    height: 36px;
+    padding: 0 16px;
+    border: 0;
+    outline: 0;
+    background-color: var(--overlay-16);
+    color: var(--text-primary);
+    cursor: pointer;
+
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: auto;
+        background-color: var(--action-disabled-background);
+        color: var(--text-disabled);
+
+        .btn-action:hover {
+            background-color: transparent;
+        }
+    }
+
+    .btn-action {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    &-label {
+        display: inline-flex;
+        align-items: center;
+        height: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        color: inherit;
+    }
+}
+
+.btn {
+    &-contained {
+        box-shadow: 0;
+    }
+    &-outlined {
+        border: 1px solid var(--divider);
+        background-color: transparent;
+    }
+
+    &-text {
+        background-color: transparent;
+    }
+}
+
+.btn {
+    &-large {
+        height: 40px;
+        padding: 0px 22px;
+    }
+
+    &-small {
+        height: 32px;
+        padding: 0px 10px;
+    }
+}
+
+.btn-full-width {
+    width: 100%;
+}
+
+@media (hover: hover) {
+    .btn-action:hover {
+        background-color: var(--action-hover);
+    }
+}
+
+@media (hover: none) {
+    .btn-action:active {
+        background-color: var(--action-hover);
+        transition: 100ms;
+    }
+}
