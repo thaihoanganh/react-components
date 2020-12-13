@@ -45,7 +45,7 @@ const Select: React.FC<SelectProps> = (props) => {
         style,
         allowClear = true,
         autoClearSearchValue,
-        isMulti = true,
+        isMulti = false,
         placeholder,
         notFoundContent,
         showArrow,

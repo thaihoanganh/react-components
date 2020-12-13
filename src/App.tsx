@@ -2,7 +2,7 @@ import React from 'react';
 
 import ThemeProvider from 'components/theme/ThemeProvider';
 import Button from 'components/button/Buton';
-import Icon from 'components/icon';
+import Icon from 'components/icon/Icon';
 import Card from 'components/card/Card';
 import Carousel from 'components/carousel/Carousel';
 import { Tabs, Tab } from 'components/tabs';
