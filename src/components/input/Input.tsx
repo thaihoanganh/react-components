@@ -17,16 +17,17 @@ export interface InputProps extends IProps {
     type?: string;
     value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    getValue?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: React.FC<InputProps> = (props) => {
+export type Ref = HTMLInputElement;
+
+const Input = React.forwardRef<Ref, InputProps>((props, ref) => {
     const {
         className,
-        size,
+        size = 'middle',
         addonAfter,
         addonBefore,
-        allowClear,
-        bordered,
         disabled,
         id,
         maxLength,
@@ -35,17 +36,25 @@ const Input: React.FC<InputProps> = (props) => {
         type = 'text',
         value,
         onChange,
+        getValue,
     } = props;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         onChange && onChange(event);
+        getValue && getValue(event);
     };
 
-    const classes = classnames('input-group', className);
+    const classes = classnames(
+        'input-group',
+        size && size !== 'middle' && `input-group-${size}`,
+        className,
+    );
+
     return (
         <div className={classes} style={style}>
             {addonAfter && <span className="input-group-addon">{addonAfter}</span>}
             <input
+                ref={ref}
                 type={type}
                 className="input"
                 id={id}
@@ -58,6 +67,8 @@ const Input: React.FC<InputProps> = (props) => {
             {addonBefore && <span className="input-group-addon">{addonBefore}</span>}
         </div>
     );
-};
+});
+
+Input.displayName = 'Input';
 
 export default Input;

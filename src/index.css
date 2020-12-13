@@ -7,9 +7,3 @@ html {
     font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
     background-color: var(--background-default);
 }
-
-@media (hover: none) {
-    * {
-        cursor: none !important;
-    }
-}

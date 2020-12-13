@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import './style.scss';
 
 export interface ButtonProps extends IProps {
+    type?: 'button' | 'submit' | 'reset' | undefined;
     disabled?: boolean;
     fullWidth?: boolean;
     size?: 'large' | 'medium' | 'small';
@@ -16,6 +17,7 @@ const Button: React.FC<ButtonProps> = (props) => {
         children,
         className,
         style,
+        type,
         disabled,
         fullWidth,
         size = 'medium',
@@ -35,7 +37,13 @@ const Button: React.FC<ButtonProps> = (props) => {
         className,
     );
     return (
-        <button className={classes} style={style} disabled={disabled} onClick={handleClick}>
+        <button
+            type={type}
+            className={classes}
+            style={style}
+            disabled={disabled}
+            onClick={handleClick}
+        >
             <span className="btn-label">{children}</span>
             <span className="btn-action"></span>
         </button>

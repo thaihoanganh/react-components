@@ -49,7 +49,7 @@
 
 // dark mode
 // :root {
-//     --background-primary: #000;
+//     --background-primary: #212121;
 //     --background-contrast: #fff;
 
 //     --overlay-0: rgba(255, 255, 255, 0);
@@ -63,6 +63,7 @@
 //     --overlay-16: rgba(255, 255, 255, 0.15);
 //     --overlay-24: rgba(255, 255, 255, 0.24);
 
+//     --action-active: rgba(255, 255, 255, 0.16);
 //     --text-primary: rgba(255, 255, 255, 0.87);
 //     --text-secondary: rgba(255, 255, 255, 0.6);
 //     --text-disabled: rgba(255, 255, 255, 0.38);
@@ -94,3 +95,17 @@
 //     --box-shadow-20: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
 //         0px 9px 46px 8px rgba(0, 0, 0, 0.12);
 // }
+
+html {
+    background-color: var(--background-primary) !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    background-color: var(--background-default);
+}
