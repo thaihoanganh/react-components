@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import './style.scss';
 
 export interface AccordionProps extends IProps {
-    title: string;
+    title: React.ReactNode;
     extra?: React.ReactNode;
     showArrow?: boolean;
 }

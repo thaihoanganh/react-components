@@ -4,50 +4,30 @@ import classnames from 'classnames';
 
 import './style.scss';
 
-export interface NotificationProps extends IProps {
-    description?: React.ReactNode;
-    duration?: number;
+export interface NotificationProps {
+    title?: React.ReactNode;
     message?: React.ReactNode;
-    // placement?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
-    onClose?: () => void;
+    duration?: number;
 }
 
-export interface PortalInterface {
-    children?: React.ReactNode;
-    isActive?: boolean;
-}
-
-if (document.getElementById('notification-root') === null) {
-    const el = document.createElement('div');
-    el.setAttribute('id', 'notification-root');
-    document.body.appendChild(el);
-}
-
-const Portal = (props: PortalInterface) => {
-    const { children, isActive } = props;
-    return ReactDOM.createPortal(children, document.getElementById('notification-root') as any);
-};
-
-const Notification: React.FC<NotificationProps> = (props) => {
-    const {
-        children,
-        className,
-        style,
-        description,
-        message,
-        duration = 4500,
-        // placement,
-        onClose,
-    } = props;
-
-    const ref: any = React.useRef();
+const NotificationDom: React.FC<NotificationProps> = (props) => {
+    const { title, message, duration = 4500 } = props;
 
     const [isOpen, setOpen] = React.useState(false);
+    const [isActive, setActive] = React.useState(false);
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         setTimeout(() => {
             setOpen(true);
         });
+
+        setTimeout(() => {
+            setActive(true);
+        }, 350);
+
+        setTimeout(() => {
+            setActive(false);
+        }, duration - 350);
 
         setTimeout(() => {
             setOpen(false);
@@ -55,20 +35,46 @@ const Notification: React.FC<NotificationProps> = (props) => {
     }, []);
 
     const styleNotification: React.CSSProperties = {
-        transform: isOpen ? 'translateX(0px)' : 'translateX(330px)',
-        ...style,
+        transform: isActive ? 'translateX(0px)' : 'translateX(330px)',
+        transition: '350ms',
     };
-    const classes = classnames('notification', className);
-    return (
-        <Portal isActive={true}>
+    const classes = classnames('notification');
+
+    if (isOpen) {
+        return (
             <div className={classes} style={styleNotification}>
                 <div className="notification-content">
-                    <div className="notification-description">{description}</div>
+                    <div className="notification-title">{title}</div>
                     <div className="notification-message">{message}</div>
                 </div>
             </div>
-        </Portal>
-    );
+        );
+    }
+
+    return null;
+};
+
+const Notification = (props: NotificationProps) => {
+    let notificationContainer: any;
+    if (document.getElementById('notification-root') === null) {
+        notificationContainer = document.createElement('div');
+        notificationContainer.setAttribute('id', 'notification-root');
+        document.body.appendChild(notificationContainer);
+    } else {
+        notificationContainer = document.getElementById('notification-root');
+    }
+
+    const element = document.createElement('div');
+
+    notificationContainer.appendChild(element);
+
+    setTimeout(() => {
+        notificationContainer.removeChild(element);
+    }, props.duration || 4500);
+
+    setTimeout(() => {
+        ReactDOM.render(<NotificationDom {...props} />, element);
+    });
 };
 
 export default Notification;

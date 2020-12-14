@@ -13,21 +13,11 @@ export interface ButtonProps extends IProps {
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-    const {
-        children,
-        className,
-        style,
-        type,
-        disabled,
-        fullWidth,
-        size = 'medium',
-        variant = 'contained',
-        onClick,
-    } = props;
+    const { children, className, style, type, disabled, fullWidth, size, variant, onClick } = props;
 
-    function handleClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         onClick && onClick(event);
-    }
+    };
 
     const classes = classnames(
         'btn',

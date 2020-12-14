@@ -18,16 +18,29 @@ import Alert from 'components/alert/Alert';
 import Checkbox from 'components/checkbox/Checkbox';
 import Radio from 'components/radio/Radio';
 import { Select } from 'components/select';
-import { Notification } from 'components/notification';
+import Notification from 'components/notification/Notification';
 
 import './index.css';
 
 const Content = () => {
     const [isOpen, setOpen] = React.useState(false);
+    const [isOpen2, setOpen2] = React.useState(false);
+
+    const onOpenNotification = () => {
+        Notification({
+            title: 'ghdsb',
+            message: 'dfcyhjn',
+            duration: 10000,
+        });
+    };
+
+    console.log('rerender');
+
     return (
         <div style={{ padding: 20 }}>
-            <Button onClick={() => setOpen(!isOpen)}>Open Notification</Button>
-            {isOpen && <Notification />}
+            <Button style={{ margin: 10 }} onClick={onOpenNotification}>
+                onOpenNotification
+            </Button>
         </div>
     );
 };
